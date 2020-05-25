@@ -31,23 +31,10 @@ leftMenu.addEventListener('click', event =>{
 // end меню
 
 //смена картинок при наведении
-const tvCards = document.querySelectorAll('.tv-card__img');
-const changePicture = event =>{
-    const src = event.target.getAttribute('data-backdrop');
-        event.target.setAttribute('data-backdrop',event.target.src);
-        event.target.src = src;
-}
-    for(let i = 0; i<tvCards.length; i++){
-        tvCards[i].addEventListener('mouseover', event =>{
-            changePicture(event);
-
-        });
-        tvCards[i].addEventListener('mouseout', event =>{
-            changePicture(event);
-        });
-}   
+document.querySelectorAll('.tv-card__img').forEach((element, src)=>{
+    element.addEventListener('mouseenter',()=> 
+    (src = element.src) && (element.src = element.getAttribute('data-backdrop')));
+    element.addEventListener('mouseleave',() => element.src = src);
+});
 
 //end смена картинок при наведении 
-
-
-
